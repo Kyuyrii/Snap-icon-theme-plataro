@@ -1,0 +1,34 @@
+name: icon-theme-plataro
+build-base: core26
+base: bare
+adopt-info: plataro-icon-theme
+platforms:
+  all:
+    build-on: [amd64]
+    build-for: [all]
+summary: Plataro icon theme
+description: A Snap containing the Plataro icon theme.
+grade: stable
+confinement: strict
+compression: lzo
+license: CC-BY-SA-4.0
+
+slots:
+  icon-themes:
+    interface: content
+    source:
+      read:
+        - $SNAP/share/icons/Plataro
+  
+parts:
+  plataro-icon-theme:
+    plugin: dump
+    source: https://github.com/tsujan/Plataro.git
+    build-packages: [wget]
+    override-build: |
+      craftctl default
+      craftctl set version=$(date +%Y-%m-%d)
+    override-prime: |
+      wget https://raw.githubusercontent.com/tsujan/Plataro/refs/heads/master/COPYING
+    organize:
+      "*": share/icons/Plataro

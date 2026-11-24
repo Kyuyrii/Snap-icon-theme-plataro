@@ -6,7 +6,7 @@ platforms:
   all:
     build-on: [amd64]
     build-for: [all]
-summary: Plataro icon theme
+summary: Plataro icon theme. Created by tsujan
 description: A Snap containing the Plataro icon theme.
 grade: stable
 confinement: strict
